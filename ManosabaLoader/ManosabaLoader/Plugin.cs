@@ -254,6 +254,14 @@ namespace ManosabaLoader
             ModChapterDisplay.ChapterLogWarning = msg => { Log.LogWarning(string.Format("[ChapterDisplay]\t{0}", msg)); };
             ModChapterDisplay.ChapterLogError = msg => { Log.LogError(string.Format("[ChapterDisplay]\t{0}", msg)); };
 
+            // 音频格式补丁 (WAV any format + OGG Vorbis)
+            ModAudioPatch.AudioLogMessage = msg => { Log.LogMessage(string.Format("[AudioPatch]\t{0}", msg)); };
+            ModAudioPatch.AudioLogInfo = msg => { Log.LogInfo(string.Format("[AudioPatch]\t{0}", msg)); };
+            ModAudioPatch.AudioLogDebug = msg => { Log.LogDebug(string.Format("[AudioPatch]\t{0}", msg)); };
+            ModAudioPatch.AudioLogWarning = msg => { Log.LogWarning(string.Format("[AudioPatch]\t{0}", msg)); };
+            ModAudioPatch.AudioLogError = msg => { Log.LogError(string.Format("[AudioPatch]\t{0}", msg)); };
+            ModAudioPatch.Init(harmony);
+
             Il2CppFieldHelper.FieldHelperLogMessage = msg => { Log.LogMessage(string.Format("[FieldHelper]\t{0}", msg)); };
             Il2CppFieldHelper.FieldHelperLogInfo = msg => { Log.LogInfo(string.Format("[FieldHelper]\t{0}", msg)); };
             Il2CppFieldHelper.FieldHelperLogDebug = msg => { Log.LogDebug(string.Format("[FieldHelper]\t{0}", msg)); };
