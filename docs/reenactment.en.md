@@ -69,7 +69,7 @@ Hero: And then it was over.
 @set "isReenact = false"
 ```
 
-This is exactly how the vanilla trial scripts are written (dump one with the Ctrl+P debug hotkey, see §7): spawn and despawn are fire-and-forget (`!wait`), fixed `@wait` calls cover the curtain animation, dialogue prints over the open stage, and `@resetText` clears the text box before the curtain closes. The vanilla scripts even put an `@autoSave` right after the spawn. `params:N` selects the step (0-based); to play another step on the same open stage, call `@spawn` again with a different `params:` and no `@despawn` in between. If you need the script to block until a step's animation has finished, write `wait:true` instead of `!wait`.
+This is exactly how the vanilla trial scripts are written (taken from the game's own Act01_Chapter01_Trial15): spawn and despawn are fire-and-forget (`!wait`), fixed `@wait` calls cover the curtain animation, dialogue prints over the open stage, and `@resetText` clears the text box before the curtain closes. The vanilla scripts even put an `@autoSave` right after the spawn. `params:N` selects the step (0-based); to play another step on the same open stage, call `@spawn` again with a different `params:` and no `@despawn` in between. If you need the script to block until a step's animation has finished, write `wait:true` instead of `!wait`.
 
 ### Step 4: test in game
 
@@ -149,11 +149,4 @@ The vanilla stage layers are plain PNGs inside the game data (for scene 1-1-2: `
 - The shell's curtain, letterbox and their animations cannot be changed.
 - Skeletal (bone) animation is not supported; split a character into parts and animate the parts.
 - Vanilla reference: each vanilla scene is one spawn with a single story timeline; multiple `Steps` on one stage are this loader's addition. Everything else (flags, waits, `@resetText`) is shown in Step 3.
-
-
-
-## 7. Reading the vanilla scripts
-
-With `Debug.OpenDebug = true`, press **Ctrl+P** while a vanilla chapter is playing. The loader writes every currently loaded script as `.nani` text into `dump_scripts/` inside the game folder (for example `Scripts_Act01_Chapter01_Act01_Chapter01_Trial15.nani`, the first reenactment sequence). This is the most reliable reference for the exact command syntax the game uses.
-
-About `isReenact`: the only place the game reads it is the `BeginAdv` subroutine, which shows the witch-book button only when `hasWitchBook && !isReenact`. Setting it to `true` around your sequence keeps that button hidden while the stage is up, exactly as in the vanilla trials; if your mod never grants the witch book it changes nothing, but keeping it costs nothing and stays compatible with future game logic.
+- About `isReenact`: the only place the game reads it is the `BeginAdv` subroutine, which shows the witch-book button only when `hasWitchBook && !isReenact`. Setting it to `true` around your sequence keeps that button hidden while the stage is up, exactly as in the vanilla trials; if your mod never grants the witch book it changes nothing, but keeping it costs nothing and stays compatible with future game logic.

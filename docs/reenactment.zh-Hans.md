@@ -69,7 +69,7 @@ Hero: 然后就结束了。
 @set "isReenact = false"
 ```
 
-这就是原版审判剧本的写法（用 Ctrl+P 调试热键可以导出原版剧本，见 §7）：spawn 和 despawn 都不等待（`!wait`），用固定的 `@wait` 盖住幕布动画，对话打印在打开的舞台上，闭幕前用 `@resetText` 清空文本框。原版甚至在 spawn 之后紧接着放了一个 `@autoSave`。`params:N` 选择步骤（从 0 开始）；要在同一个打开的舞台上播放下一步，直接再写一次带不同 `params:` 的 `@spawn`，中间不要 `@despawn`。如果需要剧本卡住等动画播完，把 `!wait` 换成 `wait:true`。
+这就是原版审判剧本的写法（取自游戏自带的 Act01_Chapter01_Trial15）：spawn 和 despawn 都不等待（`!wait`），用固定的 `@wait` 盖住幕布动画，对话打印在打开的舞台上，闭幕前用 `@resetText` 清空文本框。原版甚至在 spawn 之后紧接着放了一个 `@autoSave`。`params:N` 选择步骤（从 0 开始）；要在同一个打开的舞台上播放下一步，直接再写一次带不同 `params:` 的 `@spawn`，中间不要 `@despawn`。如果需要剧本卡住等动画播完，把 `!wait` 换成 `wait:true`。
 
 ### 第四步：游戏内测试
 
@@ -149,11 +149,4 @@ Hero: 然后就结束了。
 - 外壳的幕布、黑边及其动画不可修改。
 - 不支持骨骼动画；把角色拆成几部分分别做动画即可。
 - 原版参考：原版每段场景是一次 spawn、只有一条剧情 Timeline；同一舞台上的多个 `Steps` 是本加载器额外提供的。其余（标记变量、等待、`@resetText`）见第三步。
-
-
-
-## 7. 查看原版剧本
-
-在 `Debug.OpenDebug = true` 时，原版章节播放中按 **Ctrl+P**，加载器会把当前已加载的全部剧本还原成 `.nani` 文本写到游戏目录的 `dump_scripts/`（例如 `Scripts_Act01_Chapter01_Act01_Chapter01_Trial15.nani` 就是第一段再现演出）。这是了解游戏实际命令写法最可靠的参考。
-
-关于 `isReenact`：游戏里只有 `BeginAdv` 子程序读它，条件是 `hasWitchBook && !isReenact` 时才显示魔女图鉴按钮。在你的演出前后把它设为 `true` / `false`，舞台打开期间图鉴按钮就会像原版审判一样保持隐藏；如果你的 mod 从不发放魔女图鉴，它没有任何效果，但照抄没有成本，也能兼容游戏以后的逻辑。
+- 关于 `isReenact`：游戏里只有 `BeginAdv` 子程序读它，条件是 `hasWitchBook && !isReenact` 时才显示魔女图鉴按钮。在你的演出前后把它设为 `true` / `false`，舞台打开期间图鉴按钮就会像原版审判一样保持隐藏；如果你的 mod 从不发放魔女图鉴，它没有任何效果，但照抄没有成本，也能兼容游戏以后的逻辑。
