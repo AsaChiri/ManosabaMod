@@ -383,7 +383,8 @@ namespace ManosabaLoader
                 ModDebugTools.ShowConsole();
             }
 
-            if (Keyboard.current.ctrlKey.isPressed && Keyboard.current.pKey.wasReleasedThisFrame)
+            // 不用 Ctrl 组合键：游戏用 Ctrl 做快进
+            if (Keyboard.current.f9Key.wasReleasedThisFrame)
             {
                 ModDebugTools.DumpLoadedScripts();
             }

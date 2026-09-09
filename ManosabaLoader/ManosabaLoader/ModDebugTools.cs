@@ -47,7 +47,7 @@ namespace ManosabaLoader
         /// <summary>
         /// 把当前已加载的所有 Naninovel 剧本（含原版）用 Naninovel 自带的 ScriptAssetSerializer 还原成 .nani 文本，
         /// 写到游戏目录下 dump_scripts/。用途：查看原版剧本怎么写（@print 参数、@spawn 再现的用法等）。
-        /// 调试组件里 Ctrl+P 触发。
+        /// 调试组件里 F9 触发（不用 Ctrl 组合键，游戏用 Ctrl 做快进）。
         /// </summary>
         public static void DumpLoadedScripts()
         {
