@@ -382,6 +382,11 @@ namespace ManosabaLoader
             {
                 ModDebugTools.ShowConsole();
             }
+
+            if (Keyboard.current.ctrlKey.isPressed && Keyboard.current.pKey.wasReleasedThisFrame)
+            {
+                ModDebugTools.DumpLoadedScripts();
+            }
         }
 
         void OnGUI()
